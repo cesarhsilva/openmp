@@ -1,0 +1,19 @@
+------------------------------------------------
+gcc mytime.c primo_sequencial.c -o primo_sequencial -lm -fopenmp
+
+for ((i=1; i<=15; i++)); do time ./primo_sequencial 1 80000000; sleep 1 ; done
+
+------------------------------------------------
+gcc mytime.c primo_paralelo_dinamico.c -o primo_paralelo_dinamico -lm -fopenmp
+
+for ((i=2; i<=6; i++)); do for ((j=1; j<=15; j++)); do time ./primo_paralelo_dinamico 1 80000000 $i; sleep 1 ; done; done
+
+------------------------------------------------
+gcc mytime.c primo_paralelo_estatico.c -o primo_paralelo_estatico -lm -fopenmp
+
+for ((i=2; i<=6; i++)); do for ((j=1; j<=15; j++)); do time ./primo_paralelo_estatico 1 80000000 $i; sleep 1 ; done; done
+
+------------------------------------------------
+gcc mytime.c primo_paralelo_guided.c -o primo_paralelo_guided -lm -fopenmp
+
+for ((i=2; i<=6; i++)); do for ((j=1; j<=15; j++)); do time ./primo_paralelo_guided 1 80000000 $i; sleep 1 ; done; done
